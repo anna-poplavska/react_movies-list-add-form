@@ -29,7 +29,6 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   function handleFormSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
 
-
     if (!isValid) {
       return;
     }
@@ -43,12 +42,15 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     };
 
     onAdd(newMovie);
-    setCount(previousCount => previousCount + 1);
-    setTitle('');
-    setDescription('');
-    setImgUrl('');
-    setImdbUrl('');
-    setImdbId('');
+    setCount(previousCount => {
+      setTitle('');
+      setDescription('');
+      setImgUrl('');
+      setImdbUrl('');
+      setImdbId('');
+
+      return previousCount + 1;
+    });
   }
 
   return (
